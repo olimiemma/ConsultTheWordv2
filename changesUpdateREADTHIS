@@ -1,0 +1,26 @@
+In this updated code:
+
+We import the necessary modules: Flask for creating the server, request for handling HTTP requests, jsonify for converting Python objects to JSON responses, and openai for interacting with the OpenAI API.
+We create a Flask app instance.
+We set the OpenAI API key using openai.api_key. Make sure to replace "YOUR_API_KEY" with your actual API key.
+We define a dictionary models that maps the AI model names (GPT, Claude, GEMINI) to their corresponding model identifiers in the OpenAI API. You can update these identifiers based on the specific models you want to use.
+We set the default model to GPT using default_model.
+We define an API endpoint /api/chat that accepts POST requests.
+Inside the chat() function:
+
+We retrieve the user input from the JSON payload using request.json["prompt"].
+We get the selected model from the JSON payload using request.json.get("model", default_model). If no model is specified, we use the default model.
+We retrieve the corresponding model name from the models dictionary based on the selected model.
+We send the user input to the AI model for processing using openai.Completion.create(), specifying the selected model, prompt, and other parameters.
+We get the generated response from the AI model.
+We return the AI response as a JSON object using jsonify().
+
+
+Finally, we run the Flask app if the script is executed directly.
+
+To use this backend implementation with your HTML frontend:
+
+Update the script.js file to send the user input and selected model to the /api/chat endpoint using an HTTP POST request.
+Display the AI response received from the server in the appropriate area of your HTML webpage.
+Make sure to install the required dependencies (flask and openai) before running the Python script.
+Run the Python script to start the server, and then open the HTML webpage in a web browser to interact with the chat app.
